@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/playground/redux-101.js',
     output: {
         path: path.join(__dirname, 'public'),   // Absolute path on your machine where you want to output the bundle file.
         filename: 'bundle.js'   // Anything we like but this the most common name used.
