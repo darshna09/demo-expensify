@@ -2,17 +2,39 @@
 
 import { createStore } from 'redux';
 
-const store = createStore((state = { count: 0 }, action) => {
+// Action generator - returns the action object for INCREMENT
+const incrementCount = ({ incrementBy = 1 } = {}) => ({
+    type: 'INCREMENT',
+    incrementBy
+});
+
+// Action generator - returns the action object for DECREMENT
+const decrementCount = ({ decrementBy = 1 } = {}) => ({
+    type: 'DECREMENT',
+    decrementBy
+});
+
+// Action generator - returns the action object for SET
+const setCount = ({ count = 0 } = {}) => ({
+    type: 'SET',
+    count
+});
+
+// Action generator - returns the action object for RESET
+const resetCount = () => ({
+    type: 'RESET'
+});
+
+// Reducers
+const countReducer = (state = { count: 0 }, action) => {
     switch(action.type) {
         case 'INCREMENT':
-            const incrementBy = typeof action.incrementBy === 'number' ? action.incrementBy : 1;
             return {
-                count: state.count + incrementBy
+                count: state.count + action.incrementBy
             }
         case 'DECREMENT':
-            const decrementBy = typeof action.decrementBy === 'number' ? action.decrementBy : 1;
             return {
-                count: state.count - decrementBy
+                count: state.count - action.decrementBy
             }
         case 'SET':
             return {
@@ -25,32 +47,31 @@ const store = createStore((state = { count: 0 }, action) => {
         default:
             return state;
     };
-});
+};
+
+// Store - State container
+const store = createStore(countReducer);
 
 const unsubscribe = store.subscribe(() => {
     console.log(store.getState());
 });
 
-// Action INCREMENT - Increment count by 1.
-store.dispatch({
-    type: 'INCREMENT',
-    incrementBy: 5
-});
+// Dispatch Action INCREMENT - Increment count by 5.
+store.dispatch(incrementCount({ incrementBy: 5}));
 
-// Action DECREMENT - Decrement count by 1.
-store.dispatch({
-    type: 'DECREMENT',
-    decrementBy: 8
-});
+// Dispatch Action INCREMENT - Increment count by 1.
+store.dispatch(incrementCount());
 
-// Action RESET - Reset count to 0.
-store.dispatch({
-    type: 'RESET'
-});
+// Dispatch Action DECREMENT - Decrement count by 1.
+store.dispatch(decrementCount());
 
-store.dispatch({
-    type: 'SET',
-    count: 101
-});
+// Dispatch Action DECREMENT - Decrement count by 1.
+store.dispatch(decrementCount({ decrementBy: 2}));
+
+// Dispatch Action RESET - Reset count to 0.
+store.dispatch(resetCount());
+
+// Dispatch Action SET - Reset count to 20.
+store.dispatch(setCount( { count: 20 }));
 
 unsubscribe();
