@@ -1,12 +1,11 @@
-// Start date, end date  - timestamp (milliseconds)
-// Starts from Jnuary 1st 1970 from midnight (UNIX EPOCH)
-// Positive milliseconds are after the above time while the ones in negative are before this time.
+import moment from 'moment';
 
 // Get visible expenses - filtered/sorted
 export default (expenses, { text, sortBy, startDate, endDate }) => {
     return expenses.filter((expense) => {
-        const startDateMatch = typeof startDate !== 'number' || expense.createdAt >= startDate;
-        const endDateMatch = typeof endDate !== 'number' || expense.createdAt <= endDate;
+        const createdAtMoment = moment(expense.createdAt);
+        const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true;
+        const endDateMatch = endDate? endDate.isSameOrAfter(createdAtMoment, 'day') : true;
         const textMatch = expense.description.toLowerCase().includes(text.toLowerCase());
 
         return startDateMatch && endDateMatch && textMatch;
