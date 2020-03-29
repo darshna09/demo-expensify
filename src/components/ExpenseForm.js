@@ -41,7 +41,7 @@ export default class ExpenseForm extends React.Component {
     }
 
     onFocusChange = ({ focused }) => {
-        this.setState({ focused })
+        this.setState(() => ({ focused }));
     };
 
     onExpenseSubmit = (e) => {
