@@ -12,7 +12,7 @@
   "scripts": {
     "build": "webpack",
     "dev-server": "webpack-dev-server",
-    "test": "jest"
+    "test": "jest --config=jest.config.json"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -22,11 +22,15 @@
     "babel-preset-react": "^6.24.1",
     "braces": "^3.0.2",
     "css-loader": "^3.4.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
     "jest": "^20.0.4",
     "live-server": "^1.2.1",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
+    "raf": "^3.3.2",
     "react": "^16.13.0",
     "react-addons-shallow-compare": "^15.6.0",
     "react-dates": "^12.7.1",
