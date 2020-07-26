@@ -3,7 +3,6 @@ import moment from 'moment';
 import { shallow } from 'enzyme';
 import expenses from '../fixtures/expenses';
 import ExpenseForm from '../../components/ExpenseForm';
-import { SingleDatePicker } from 'react-dates';
 
 test('should render ExpenseForm correctly', () => {
     const wrapper = shallow(<ExpenseForm/>);
