@@ -49,5 +49,8 @@
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.26.0"
+  },
+  "resolutions": {
+    "serialize-javascript": "^2.1.1"
   }
 }
