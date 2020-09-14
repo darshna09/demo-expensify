@@ -48,7 +48,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.26.0"
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "node-fetch": "^2.6.1"
   },
   "resolutions": {
     "serialize-javascript": "^4.0.0"
